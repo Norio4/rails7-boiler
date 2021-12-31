@@ -1,0 +1,35 @@
+version: "3"
+services:
+  app:
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    volumes:
+      - ./app:/app:z
+    ports:
+      - "8000:3000"
+    environment:
+      - RAILS_ENV=development
+      - RUN_MODE=NO
+    depends_on:
+      - redis
+      - db
+    links:
+      - redis
+      - db
+
+  redis:
+    image: "docker.io/redis:latest"
+    volumes:
+      - ./data/redis:/data
+
+  db:
+    build: ./pg
+    volumes:
+     - /home/postgresql-data-rails7:/var/lib/postgresql/data:z
+    tty: true
+    restart: always
+    environment:
+      - "POSTGRES_USER=${DATABASE_USER}"
+      - "POSTGRES_PASSWORD=${DATABASE_PASSWORD}"
+      - "POSTGRES_DB=${DATABASE_NAME}"

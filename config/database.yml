@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  host: <%= ENV.fetch("DATABASE_HOST") %>
+  database: <%= ENV.fetch("DATABASE_NAME") %>
+  username: <%= ENV.fetch("DATABASE_USER") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 16 } %>
+  timeout: <%= ENV.fetch("RAILS_DATABASE_TIMEOUT") {5000} %>
+  #port: 5431
+
+test:
+  <<: *default
+  # adapter: sqlite3
+  # database: db/test.sqlite3
+  # pool: 5
+  # timeout: 5000
+
+development:
+  <<: *default
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
