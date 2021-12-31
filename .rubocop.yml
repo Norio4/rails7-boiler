@@ -1,0 +1,40 @@
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "bin/bundle"
+    - "bin/yarn"
+    - "config/*"
+    - "config/**/*"
+    - "config/**/**/*"
+    - "test/*"
+    - "test/**/*"
+    - "test/**/**/*"
+    - "spec/*"
+    - "spec/**/*"
+    - "spec/**/**/*"
+    - "db/**/*"
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+Style/HashSyntax:
+  Exclude:
+    - "**/*.rake"
+    - "Rakefile"
+
+Style/SymbolArray:
+  Enabled: true
+
+Style/NumericLiterals:
+  MinDigits: 7
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
