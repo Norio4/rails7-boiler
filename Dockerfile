@@ -4,12 +4,12 @@ WORKDIR /app
 ENV TZ=Asia/Tokyo
 ENV RAILS_ENV=production
 
-#COPY Gemfile .
-#COPY Gemfile.lock .
+COPY Gemfile .
+COPY Gemfile.lock .
 
 RUN apk update && \
     apk add --no-cache yarn tzdata libxml2-dev curl-dev make gcc libc-dev g++ imagemagick6-dev postgresql-dev vim && \
-    # bundle install --without development test && \
+    bundle install && \
     gem install foreman && \
     mkdir log && \
     touch log/production.log && \
