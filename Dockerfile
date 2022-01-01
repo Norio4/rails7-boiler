@@ -8,7 +8,7 @@ COPY Gemfile .
 COPY Gemfile.lock .
 
 RUN apk update && \
-    apk add --no-cache yarn tzdata libxml2-dev curl-dev make gcc libc-dev g++ imagemagick6-dev postgresql-dev vim && \
+    apk add --no-cache yarn tzdata libxml2-dev curl-dev make gcc libc-dev g++ imagemagick6-dev sqlite-dev postgresql-dev vim git && \
     bundle install && \
     gem install foreman && \
     mkdir log && \
